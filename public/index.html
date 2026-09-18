@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KisanMitra AI — Smart Crop Advisory</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🌾 KisanMitra <span>AI</span></div>
+    <button id="langBtn">తెలుగు</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="tag">SMART CROP ADVISORY • SIH26-10</p>
+        <h1>Better decisions.<br><span>Better crops.</span></h1>
+        <p class="sub">Simple, voice-friendly crop guidance for small and marginal farmers.</p>
+        <div class="stats">
+          <div><b>🌱</b><small>Crop Advice</small></div>
+          <div><b>🌦️</b><small>Live Weather</small></div>
+          <div><b>📸</b><small>AI Diagnosis</small></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="sun" id="weatherIcon">☀️</div>
+        <h3 id="weatherCity">Detecting location...</h3>
+        <p id="weatherDesc">Fetching live weather data...</p>
+        <div class="mini"><span>💧 Humidity</span><strong id="liveHumidity">--%</strong></div>
+        <div class="mini"><span>🌡️ Temperature</span><strong id="liveTemp">--°C</strong></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <div>
+          <p class="eyebrow">FARMER INPUT</p>
+          <h2>Tell us about your field</h2>
+        </div>
+        <span class="voice-note">🎙️ Voice-friendly</span>
+      </div>
+
+      <form id="farmForm">
+        <div class="grid">
+          <label>Crop
+            <select id="crop">
+              <option value="cotton">Cotton</option>
+              <option value="rice">Rice</option>
+              <option value="maize">Maize</option>
+              <option value="chilli">Chilli</option>
+              <option value="turmeric">Turmeric</option>
+              <option value="groundnut">Groundnut</option>
+            </select>
+          </label>
+
+          <label>Location
+            <input id="location" placeholder="e.g. Hyderabad, Telangana" value="Telangana">
+          </label>
+
+          <label>Soil type
+            <select id="soil">
+              <option>Red soil</option>
+              <option>Black soil</option>
+              <option>Loamy soil</option>
+              <option>Sandy soil</option>
+            </select>
+          </label>
+
+          <label>Water availability
+            <select id="water">
+              <option>Good</option>
+              <option>Moderate</option>
+              <option>Low</option>
+            </select>
+          </label>
+
+          <label>Crop stage
+            <select id="stage">
+              <option>Seedling</option>
+              <option>Vegetative</option>
+              <option>Flowering</option>
+              <option>Harvesting</option>
+            </select>
+          </label>
+
+          <label>Upload crop photo
+            <input id="photo" type="file" accept="image/*">
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="submitBtn" type="submit">✨ Get Smart Advice</button>
+          <button class="secondary" type="button" id="micBtn">🎙️ Speak</button>
+        </div>
+        <p id="speechText" class="speech"></p>
+      </form>
+    </section>
+
+    <section id="result" class="result hidden">
+      <div class="result-head">
+        <div>
+          <p class="eyebrow">SMART RECOMMENDATION</p>
+          <h2 id="resultTitle">Your field report</h2>
+        </div>
+        <button id="readBtn" class="listen">🔊 Read aloud</button>
+      </div>
+
+      <div id="diseaseCard" class="step hidden" style="margin-bottom: 20px; border-color: #5b985d; background: #f6fbf6; padding: 14px; border-radius: 8px; border: 1px solid #c8e6c9;">
+  <b style="color: #245b2b; font-size: 16px;">🌾 Crop Health Diagnosis</b>
+  <p style="margin: 8px 0 4px 0;"><strong>Issue:</strong> <span id="diseaseTitle" style="color: #c62828; font-weight: bold;">Analyzing...</span></p>
+  <p id="diseaseDetails" style="font-size: 14px; margin: 4px 0 10px 0; color: #2e3d30;"></p>
+  <div style="padding: 10px; border-left: 4px solid #2e7d32; background: #e8f5e9; border-radius: 4px;">
+    <strong style="color: #1b5e20;">Treatment / నివారణ:</strong>
+    <ul id="diseaseTreatment" style="margin: 8px 0 0 0; padding-left: 24px; font-size: 14px; color: #1e3a1e; line-height: 1.6; list-style-position: inside;"></ul>
+  </div>
+</div>
+
+      <div id="advice" class="advice"></div>
+      <div class="risk">
+        <span>Field risk level</span><strong id="risk">MODERATE</strong>
+      </div>
+      <div id="steps" class="steps"></div>
+      <p class="demo"><b>Note:</b> Advisory generated dynamically based on field parameters, live local weather, and image diagnosis.</p>
+    </section>
+  </main>
+
+  <footer>🌾 KisanMitra AI • Smart Crop Advisory Prototype</footer>
+  <script src="script.js"></script>
+</body>
+</html>

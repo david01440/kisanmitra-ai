@@ -1,56 +1,60 @@
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,Segoe UI,Arial,sans-serif;background:#f4f8f2;color:#17321f;line-height:1.5}header{height:70px;background:#fff;border-bottom:1px solid #e1e9df;display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:sticky;top:0;z-index:5}.logo{font-size:22px;font-weight:800}.logo span{font-size:12px;background:#dff3df;padding:4px 7px;border-radius:7px;margin-left:4px}header button{border:1px solid #bcd2ba;background:#f6fbf4;padding:9px 15px;border-radius:20px;cursor:pointer;font-weight:700;color:#245b2b}main{max-width:1120px;margin:auto;padding:45px 22px 70px}.hero{display:grid;grid-template-columns:1.35fr .65fr;gap:35px;align-items:center;padding:25px 0 50px}.tag,.eyebrow{color:#4d874e;font-size:12px;font-weight:800;letter-spacing:1.5px}.hero h1{font-size:clamp(42px,6vw,70px);line-height:1.03;margin:13px 0}.hero h1 span{color:#4c914d}.sub{font-size:18px;color:#657267;max-width:570px}.stats{display:flex;gap:28px;margin-top:28px}.stats div{display:flex;gap:8px;align-items:center}.stats b{font-size:22px}.stats small{color:#667568}.hero-card{background:#fff;border:1px solid #dfe8dc;border-radius:25px;padding:28px;box-shadow:0 16px 45px #274b2512}.sun{font-size:45px}.hero-card h3{margin:10px 0 4px;font-size:22px}.hero-card p{color:#718071;font-size:14px}.mini{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #edf1eb;font-size:14px}.mini strong{color:#45834b}.panel,.result{background:#fff;border:1px solid #dce7d9;border-radius:25px;padding:30px;box-shadow:0 12px 35px #274b250d}.panel-title,.result-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.panel h2,.result h2{font-size:28px}.voice-note{background:#eef8ed;color:#4a7d4d;border-radius:20px;padding:8px 13px;font-size:13px;font-weight:700}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}label{font-size:13px;font-weight:700;color:#405143}select,input{width:100%;margin-top:7px;padding:13px 14px;border:1px solid #d2ddd0;border-radius:12px;background:#fbfdfb;font-size:15px;color:#203a25;outline:none}select:focus,input:focus{border-color:#70a76e}.actions{display:flex;gap:12px;margin-top:22px}.primary,.secondary,.listen{border:0;border-radius:12px;padding:13px 18px;font-weight:800;cursor:pointer}.primary{background:#3f8446;color:white}.secondary,.listen{background:#edf6eb;color:#326a37}.speech{font-size:13px;color:#6d786d;margin-top:10px;min-height:18px}.result{margin-top:25px}.advice{background:#f0f8ee;border-left:5px solid #5b985d;border-radius:12px;padding:18px;font-size:17px}.risk{display:flex;justify-content:space-between;margin:18px 0;padding:13px 15px;border-radius:12px;background:#fff7df}.risk strong{color:#a56a12}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.step{border:1px solid #e0e8de;border-radius:13px;padding:15px}.step b{display:block;margin-bottom:5px}.step p{font-size:13px;color:#697569}.demo{margin-top:20px;font-size:12px;color:#788078}.hidden{display:none}footer{text-align:center;color:#718071;font-size:13px;padding:25px}@media(max-width:750px){.hero{grid-template-columns:1fr}.hero-card{display:none}.grid,.steps{grid-template-columns:1fr}.panel,.result{padding:20px}.panel-title,.result-head{align-items:flex-start;gap:12px;flex-direction:column}.actions{flex-direction:column}.stats{gap:14px;flex-wrap:wrap}}
-/* --- Final Clean Mobile Fix --- */
+/* --- Clean Mobile Fix --- */
 @media (max-width: 768px) {
-  /* Lock header into a single, non-wrapping row */
+  /* Prevent horizontal scroll and oversized viewport */
+  html, body {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Single-row top header */
   header, nav, .top-bar {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    flex-wrap: nowrap !important;
-    padding: 8px 12px !important;
+    padding: 10px 14px !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  /* Keep brand icon, name, and AI badge on one horizontal line */
+  /* Logo group stays compact on left */
   header > div:first-child, .brand, .logo {
     display: inline-flex !important;
-    flex-direction: row !important;
     align-items: center !important;
     gap: 6px !important;
     white-space: nowrap !important;
-    flex-shrink: 1 !important;
   }
 
-  /* Compact the language button so it doesn't push the title */
-  #langToggle, .lang-btn, header button {
-    margin: 0 !important;
-    padding: 4px 10px !important;
+  /* Keep Telugu button to its natural compact size */
+  #langToggle, .lang-btn, header button, header .btn {
+    width: auto !important;
+    min-width: unset !important;
+    max-width: max-content !important;
+    padding: 6px 14px !important;
     font-size: 13px !important;
     white-space: nowrap !important;
-    flex-shrink: 0 !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
   }
 
-  /* Keep hero and weather card stacked vertically */
+  /* Stack weather under the hero banner */
   .hero, .hero-section, .banner, .top-section {
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 16px !important;
-    padding: 16px !important;
+    gap: 12px !important;
+    padding: 12px !important;
   }
 
-  .hero > div, .weather-card, [class*="weather"], [class*="condition"] {
+  .weather-card, [class*="weather"], [class*="condition"] {
     position: static !important;
     width: 100% !important;
-    max-width: 100% !important;
-    display: block !important;
-    margin: 12px 0 !important;
     box-sizing: border-box !important;
+    margin: 8px 0 !important;
   }
 
-  /* Page columns stack smoothly */
+  /* Main content layout */
   main, .container, .grid, .layout {
     display: flex !important;
     flex-direction: column !important;
@@ -59,7 +63,8 @@
     box-sizing: border-box !important;
   }
 
-  input, select, button {
+  /* Stretch only form controls and action buttons, not header buttons */
+  form input, form select, form button, .form-control {
     width: 100% !important;
     box-sizing: border-box !important;
   }
